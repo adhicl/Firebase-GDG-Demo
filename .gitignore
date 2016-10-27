@@ -1,4 +1,6 @@
 YetAnotherEventApp/*.iml
+YetAnotherEventApp/app/app.iml
+YetAnotherEventApp/app/*.iml
 YetAnotherEventApp/.gradle
 YetAnotherEventApp/local.properties
 YetAnotherEventApp/.DS_Store
