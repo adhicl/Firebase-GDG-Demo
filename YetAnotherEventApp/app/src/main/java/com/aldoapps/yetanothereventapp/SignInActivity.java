@@ -12,6 +12,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import com.facebook.AccessToken;
@@ -26,7 +27,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,6 +67,8 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
     private CallbackManager callbackManager = CallbackManager.Factory.create();
 
+    private FirebaseAuth.AuthStateListener authStateListener;
+
     private FirebaseAuth auth = FirebaseAuth.getInstance();
 
     @Override
@@ -84,8 +86,37 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
         loadingDialog = new SpotsDialog(this);
 
+        initAuthStateListener();
         initFacebookLogin();
         initGoogleSignIn();
+    }
+
+    private void initAuthStateListener() {
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    goToMainActivity();
+                } else {
+                    toastFailSignIn();
+                }
+            }
+        };
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(authStateListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (authStateListener != null) {
+            auth.removeAuthStateListener(authStateListener);
+        }
     }
 
     private void initFacebookLogin() {
@@ -116,9 +147,11 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
         googleApiClient = new GoogleApiClient.Builder(this)
             .addConnectionCallbacks(this)
+            .enableAutoManage(this, this)
             .addOnConnectionFailedListener(this)
             .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
             .build();
+        googleApiClient.connect();
     }
 
     @Override
@@ -210,8 +243,13 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
             toastFailSignIn();
         } else {
             toastSuccessSignIn();
-            // TODO: goto main activity
+            goToMainActivity();
         }
+    }
+
+    private void goToMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void toastFailSignIn() {
@@ -226,7 +264,6 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-
     }
 
     @Override
