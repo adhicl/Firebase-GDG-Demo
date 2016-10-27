@@ -49,7 +49,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_register"
+        android:id="@+id/btn_signup"
         style="@style/BaseButton.Small"
         android:text="@string/label_register"
         android:layout_gravity="center_horizontal"/>

@@ -6,6 +6,7 @@
     <string name="label_login_with_gplus">Login with Google+</string>
     <string name="label_submit">Submit</string>
     <string name="label_signin">Sign in</string>
+    <string name="label_signup">Sign up</string>
     <string name="label_or">or</string>
     <string name="label_forgot_password">Forgot password</string>
     <string name="label_ice_commmerce">icecommerce</string>

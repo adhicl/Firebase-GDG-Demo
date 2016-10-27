@@ -37,6 +37,10 @@ dependencies {
     compile 'com.google.firebase:firebase-storage:9.8.0'
     compile 'com.google.firebase:firebase-auth:9.8.0'
 
+    // For auth (make sure play service version is same as firebase
+    compile 'com.google.android.gms:play-services-auth:9.8.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.15.0'
+
     testCompile 'junit:junit:4.12'
 }
 
