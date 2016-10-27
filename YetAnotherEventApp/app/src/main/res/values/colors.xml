@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#33a3c9</color>
+    <color name="colorPrimaryDark">#37b4de</color>
+    <color name="colorAccent">#3a6f8b</color>
+
+    <color name="picton_blue">#4cc5ee</color>
+    <color name="ming">#3a6f8b</color>
+    <color name="kashmir_blue">#50689c</color>
+    <color name="punch">#DD4B39</color>
+
+    <color name="lazada_color">#F17740</color>
+    <color name="mid_green">#46b34e</color>
+    <color name="dark_fuchsia">#a20948</color>
+    <color name="cadet_blue">#50689c</color>
+    <color name="denim">#3a6f8b</color>
+
+    <color name="colorProductSpinner">#fafafa</color>
+    <color name="colorProductLabel">#37b4de</color>
+    <color name="defaultPhotoBackground">#d8d8d8</color>
+    <color name="dark_sky_blue">#37b4de</color>
+    <color name="warm_grey">#757575</color>
 </resources>

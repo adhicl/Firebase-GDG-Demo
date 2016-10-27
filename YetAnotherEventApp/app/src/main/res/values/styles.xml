@@ -2,7 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme"
-        parent="Theme.AppCompat.Light.DarkActionBar">
+        parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -16,5 +16,92 @@
         parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay"
         parent="ThemeOverlay.AppCompat.Light"/>
+
+
+    <style name="FitWidth">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="WrapContent">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="FitHeight">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="MatchParent">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="BaseTextInputLayout" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@android:color/white</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@android:color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+    </style>
+
+    <style name="BlackTextInputLayout" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/warm_grey</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@android:color/black</item>
+        <item name="colorControlNormal">@android:color/black</item>
+        <item name="colorControlActivated">@android:color/black</item>
+    </style>
+
+    <style name="TextInputLayoutWithMargin">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/margin_medium</item>
+        <item name="android:layout_marginRight">@dimen/margin_medium</item>
+        <item name="android:layout_marginBottom">@dimen/margin_small</item>
+    </style>
+
+    <style name="BaseTextInputLayout.Grey">
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="colorAccent">@android:color/darker_gray</item>
+        <item name="colorControlNormal">@android:color/darker_gray</item>
+        <item name="colorControlActivated">@android:color/darker_gray</item>
+    </style>
+
+    <style name="BaseButton.Small">
+        <item name="android:layout_width">150dp</item>
+    </style>
+
+    <style name="BaseButton" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_margin">@dimen/margin_small</item>
+        <item name="android:padding">@dimen/margin_small</item>
+        <item name="android:background">@color/ming</item>
+    </style>
+
+    <style name="BaseButton.Facebook">
+        <item name="android:text">@string/label_login_with_fb</item>
+        <item name="android:background">@color/kashmir_blue</item>
+    </style>
+
+    <style name="BaseButton.Register">
+        <item name="android:textColor">@color/ming</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:text">@string/label_register</item>
+    </style>
+
+    <style name="BaseButton.GPlus">
+        <item name="android:text">@string/label_login_with_gplus</item>
+        <item name="android:background">@color/punch</item>
+    </style>
 
 </resources>

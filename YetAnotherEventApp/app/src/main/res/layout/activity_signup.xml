@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/toolbar"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:theme="@style/BaseTextInputLayout.Grey"
+        style="@style/TextInputLayoutWithMargin"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:hint="@string/hint_name">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/et_name"
+            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_email"
+        android:theme="@style/BaseTextInputLayout.Grey"
+        android:hint="@string/hint_email"
+        style="@style/TextInputLayoutWithMargin">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/et_email"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/password_float_label"
+        android:theme="@style/BaseTextInputLayout.Grey"
+        android:layout_marginBottom="@dimen/margin_big"
+        style="@style/TextInputLayoutWithMargin">
+
+        <com.icehousecorp.icecommerce.component.PasswordEntry
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_register"
+        style="@style/BaseButton.Small"
+        android:text="@string/label_register"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>
