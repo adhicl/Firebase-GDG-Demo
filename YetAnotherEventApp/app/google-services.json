@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "148369725071",
-    "firebase_url": "https://yet-another-event-app.firebaseio.com",
-    "project_id": "yet-another-event-app",
-    "storage_bucket": "yet-another-event-app.appspot.com"
+    "project_number": "492393292440",
+    "firebase_url": "https://concertapp-81665.firebaseio.com",
+    "project_id": "concertapp-81665",
+    "storage_bucket": "concertapp-81665.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:148369725071:android:77a29649facce060",
+        "mobilesdk_app_id": "1:492393292440:android:77a29649facce060",
         "android_client_info": {
           "package_name": "com.aldoapps.yetanothereventapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "148369725071-97rf58j7p8j617llijuoceli9onsgu7o.apps.googleusercontent.com",
+          "client_id": "492393292440-7lcfkak3j08minvp0284dq29kvh7i2ra.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.aldoapps.yetanothereventapp",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "148369725071-b2krhunli86h1phukcu6g9n7cdhiq4bi.apps.googleusercontent.com",
+          "client_id": "492393292440-aevual6rp06956dueu99q1600gcaotpn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCFpM-efpJ6A-MGg9vailhMIXBAMGl_8YU"
+          "current_key": "AIzaSyCAX3EMib4spX-_dKlLc7irAwOfkN76l0A"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "148369725071-b2krhunli86h1phukcu6g9n7cdhiq4bi.apps.googleusercontent.com",
+              "client_id": "492393292440-aevual6rp06956dueu99q1600gcaotpn.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
