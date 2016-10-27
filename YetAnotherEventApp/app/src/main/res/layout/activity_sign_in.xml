@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@color/picton_blue">
 
-        <include layout="@layout/ice_header"/>
+        <include layout="@layout/header"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/til_email"

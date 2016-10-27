@@ -92,10 +92,10 @@
         <item name="android:background">@color/kashmir_blue</item>
     </style>
 
-    <style name="BaseButton.Register">
+    <style name="BaseButton.SignUp">
         <item name="android:textColor">@color/ming</item>
         <item name="android:background">@android:color/white</item>
-        <item name="android:text">@string/label_register</item>
+        <item name="android:text">@string/label_signup</item>
     </style>
 
     <style name="BaseButton.GPlus">
