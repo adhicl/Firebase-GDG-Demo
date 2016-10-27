@@ -5,20 +5,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * Created by aldo on 10/27/16.
  */
-public class LandingActivity extends BaseActivity {
+public class LandingActivity extends AppCompatActivity {
 
     private FirebaseAuth auth = FirebaseAuth.getInstance();
-
-    @Override
-    protected int getLayout() {
-        return R.layout.activity_landing;
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,6 +25,7 @@ public class LandingActivity extends BaseActivity {
 
         // if user already login, don't bother inflate layout
         setContentView(R.layout.activity_landing);
+        ButterKnife.bind(this);
     }
 
     private void checkUserAuth() {
