@@ -44,12 +44,15 @@ public class MainActivity extends AppCompatActivity {
 
         result = (TextView) findViewById(R.id.result);
 
-        // To fulfill Auth != null
+        // TODO:
+        // Don't forget to set Firebase Security Rules!
+        // And Enable Sign-In Method
         firebaseAuth.signInAnonymously().addOnCompleteListener(
             new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    result.setText("Ready to send data to Firebase");
+                    boolean isTaskSuccessful = task.isSuccessful();
+                    result.setText("Ready to send data to Firebase!");
                 }
             });
 
