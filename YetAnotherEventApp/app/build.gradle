@@ -41,6 +41,9 @@ dependencies {
     compile 'com.google.android.gms:play-services-auth:9.8.0'
     compile 'com.facebook.android:facebook-android-sdk:4.15.0'
 
+    // for fancy dialog animation
+    compile 'com.github.d-max:spots-dialog:0.7@aar'
+
     testCompile 'junit:junit:4.12'
 }
 

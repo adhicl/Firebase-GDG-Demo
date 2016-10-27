@@ -22,4 +22,15 @@
     <string name="save">Save</string>
     <string name="connect">Connect</string>
 
+    <string name="label_login">Login</string>
+    <string name="regis_fail">Failed to regis</string>
+    <string name="regis_success">Registration Success</string>
+    <string name="sign_in_fail">Sign In Fail</string>
+    <string name="sign_in_success">Sign In Success</string>
+
+    <string name="facebook_app_id">953031854824486</string>
+    <string name="fb_login_protocol_scheme">fb953031854824486</string>
+    <string name="sign_up_fail">Sign Up Fail</string>
+    <string name="sign_up_success">Sign Up Success</string>
+
 </resources>
