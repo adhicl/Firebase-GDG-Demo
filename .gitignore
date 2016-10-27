@@ -1,0 +1,9 @@
+YetAnotherEventApp/*.iml
+YetAnotherEventApp/.gradle
+YetAnotherEventApp/local.properties
+YetAnotherEventApp/.DS_Store
+.DS_Store
+YetAnotherEventApp/build
+YetAnotherEventApp/captures
+YetAnotherEventApp/.externalNativeBuild
+YetAnotherEventApp/.idea
