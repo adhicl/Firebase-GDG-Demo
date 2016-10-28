@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tiket Konser</string>
+    <string name="app_name">My Menu</string>
     <string name="action_sign_out">Sign Out</string>
 
     <string name="label_login_with_fb">Login with facebook</string>
@@ -32,5 +32,12 @@
     <string name="fb_login_protocol_scheme">fb953031854824486</string>
     <string name="sign_up_fail">Sign Up Fail</string>
     <string name="sign_up_success">Sign Up Success</string>
+    <string name="app_name_description">Bookmark Your Menu!</string>
 
+    <string name="resto_name">Resto Name</string>
+    <string name="resto_menu">Menu</string>
+    <string name="resto_description">Description</string>
+
+    <string name="label_take_picture">Take Picture</string>
+    <string name="label_new_menu">New Menu</string>
 </resources>

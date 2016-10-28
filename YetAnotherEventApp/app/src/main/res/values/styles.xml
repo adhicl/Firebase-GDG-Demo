@@ -103,4 +103,20 @@
         <item name="android:background">@color/punch</item>
     </style>
 
+    <style name="HeaderTitleText" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:text">@string/app_name</item>
+        <item name="android:textSize">@dimen/jumbotron</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_marginTop">110dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="HeaderDescriptionText" parent="HeaderTitleText">
+        <item name="android:text">@string/app_name_description</item>
+        <item name="android:textSize">@dimen/medium_text</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+    </style>
 </resources>

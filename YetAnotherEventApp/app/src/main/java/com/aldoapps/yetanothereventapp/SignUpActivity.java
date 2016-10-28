@@ -6,6 +6,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -39,6 +40,7 @@ public class SignUpActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         loadingDialog = new SpotsDialog(this);
+        initToolbar();
     }
 
     private void initToolbar() {
@@ -77,9 +79,16 @@ public class SignUpActivity extends BaseActivity {
                         toastSuccessSignUp();
                     }
 
+                    navigateToLandingActivity();
                     finish();
                 }
             });
+    }
+
+    private void navigateToLandingActivity() {
+        Intent intent = new Intent(this, LandingActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     private void toastFailSignUp() {

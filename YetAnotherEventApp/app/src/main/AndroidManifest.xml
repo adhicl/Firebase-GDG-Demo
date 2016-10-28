@@ -26,6 +26,7 @@
         <activity android:name=".SignInActivity" android:noHistory="true"/>
         <activity android:name=".SignUpActivity" android:noHistory="true"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".NewMenuActivity"/>
     </application>
 
 </manifest>

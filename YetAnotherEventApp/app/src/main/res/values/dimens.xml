@@ -18,6 +18,7 @@
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="button_height">45dp</dimen>
     <dimen name="jumbotron">36sp</dimen>
+    <dimen name="medium_text">20sp</dimen>
     <dimen name="margin_big">60dp</dimen>
     <dimen name="button_large">40dp</dimen>
 

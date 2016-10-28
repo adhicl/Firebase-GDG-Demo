@@ -56,9 +56,14 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pushSomeValue();
+                navigateToNewMenu();
             }
         });
+    }
+
+    private void navigateToNewMenu() {
+        Intent intent = new Intent(this, NewMenuActivity.class);
+        startActivity(intent);
     }
 
     private void pushSomeValue() {
