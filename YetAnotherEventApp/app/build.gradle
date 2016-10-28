@@ -44,6 +44,9 @@ dependencies {
     // for fancy dialog animation
     compile 'com.github.d-max:spots-dialog:0.7@aar'
 
+    // Image Processing library
+    compile 'com.facebook.fresco:fresco:0.14.1'
+
     testCompile 'junit:junit:4.12'
 }
 

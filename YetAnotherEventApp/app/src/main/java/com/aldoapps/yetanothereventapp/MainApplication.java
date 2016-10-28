@@ -2,6 +2,7 @@ package com.aldoapps.yetanothereventapp;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 import android.app.Application;
 
@@ -18,5 +19,6 @@ public class MainApplication extends Application {
         // Initialize the SDK before executing any other operations,
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
+        Fresco.initialize(this);
     }
 }

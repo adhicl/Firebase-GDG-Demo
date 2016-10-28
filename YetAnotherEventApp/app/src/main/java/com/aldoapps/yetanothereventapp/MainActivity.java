@@ -1,8 +1,5 @@
 package com.aldoapps.yetanothereventapp;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -12,45 +9,45 @@ import com.google.firebase.database.ValueEventListener;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+
+public class MainActivity extends BaseActivity {
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
-    private DatabaseReference testReference = firebaseDatabase.getReference("test");
+    private DatabaseReference menuRef = firebaseDatabase.getReference("menu");
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
-    private TextView result;
+    @BindView(R.id.rv_menu)
+    RecyclerView rvMenu;
+
+    private MenuAdapter menuAdapter;
+
+    private List<RestoMenu> restoMenuList = new ArrayList<>();
+
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_main;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        result = (TextView) findViewById(R.id.result);
-
-        // TODO:
-        // Don't forget to set Firebase Security Rules!
-        // And Enable Sign-In Method
-        firebaseAuth.signInAnonymously().addOnCompleteListener(
-            new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    boolean isTaskSuccessful = task.isSuccessful();
-                    result.setText("Ready to send data to Firebase!");
-                }
-            });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -59,21 +56,21 @@ public class MainActivity extends AppCompatActivity {
                 navigateToNewMenu();
             }
         });
+
+        initRecyclerView();
+        getMenus();
     }
 
-    private void navigateToNewMenu() {
-        Intent intent = new Intent(this, NewMenuActivity.class);
-        startActivity(intent);
-    }
-
-    private void pushSomeValue() {
-        testReference.setValue("Hello GDG!");
-
-        testReference.addListenerForSingleValueEvent(new ValueEventListener() {
+    private void getMenus() {
+        menuRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String resultString = (String) dataSnapshot.getValue();
-                result.setText(resultString);
+                restoMenuList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    RestoMenu restoMenu = snapshot.getValue(RestoMenu.class);
+                    restoMenuList.add(restoMenu);
+                }
+                menuAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -81,6 +78,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private void initRecyclerView() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
+            LinearLayoutManager.VERTICAL, false);
+        rvMenu.setLayoutManager(linearLayoutManager);
+
+        menuAdapter = new MenuAdapter(restoMenuList);
+        rvMenu.setAdapter(menuAdapter);
+    }
+
+    private void navigateToNewMenu() {
+        Intent intent = new Intent(this, NewMenuActivity.class);
+        startActivity(intent);
     }
 
     @Override

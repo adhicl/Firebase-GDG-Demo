@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/btn_upload"
+        android:id="@+id/btn_submit"
         style="@style/BaseButton.Small"
         android:text="@string/label_submit"
         android:layout_marginTop="@dimen/component_margin_huge"
