@@ -1,5 +1,7 @@
 package com.aldoapps.yetanothereventapp;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -11,6 +13,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -141,9 +144,16 @@ public class MainActivity extends BaseActivity {
     }
 
     @Subscribe
-    public void onDeleteMenuEvent(DeleteMenuEvent menuEvent) {
-        Toast.makeText(this, "delete menuEvent" + menuEvent.getRestoMenu().getDescription(),
-            Toast.LENGTH_SHORT).show();
+    public void onDeleteMenuEvent(final DeleteMenuEvent menuEvent) {
+        menuRef.child(menuEvent.getRestoMenu().getKey()).removeValue().addOnCompleteListener(this,
+            new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(MainActivity.this,
+                        "Berhasil menghapus " + menuEvent.getRestoMenu().getDescription(),
+                        Toast.LENGTH_SHORT).show();
+                }
+            });
     }
 
     @Subscribe
