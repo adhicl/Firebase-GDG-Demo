@@ -1,5 +1,7 @@
 package com.aldoapps.yetanothereventapp;
 
+import org.greenrobot.eventbus.EventBus;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -32,5 +34,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onStop() {
+        EventBus.getDefault().unregister(this);
 
+        super.onStop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        EventBus.getDefault().register(this);
+    }
 }

@@ -47,6 +47,9 @@ dependencies {
     // Image Processing library
     compile 'com.facebook.fresco:fresco:0.14.1'
 
+    // Event bus library
+    compile 'org.greenrobot:eventbus:3.0.0'
+
     testCompile 'junit:junit:4.12'
 }
 

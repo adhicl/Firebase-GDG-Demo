@@ -2,6 +2,8 @@ package com.aldoapps.yetanothereventapp;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -65,12 +67,27 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             ButterKnife.bind(this, itemView);
         }
 
-        public void bind(RestoMenu restoMenu) {
+        public void bind(final RestoMenu restoMenu) {
             ivMenu.setImageURI(Uri.parse(restoMenu.getImageUrl()));
 
             tvName.setText(restoMenu.getMenu());
             tvDescription.setText(restoMenu.getDescription());
             ratingBar.setRating(restoMenu.getRating());
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    EventBus.getDefault().post(new UpdateMenuEvent(restoMenu));
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    EventBus.getDefault().post(new DeleteMenuEvent(restoMenu));
+                    return true;
+                }
+            });
         }
     }
 }

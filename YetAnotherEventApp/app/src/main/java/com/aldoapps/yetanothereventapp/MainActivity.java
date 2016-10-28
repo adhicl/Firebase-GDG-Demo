@@ -7,6 +7,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.greenrobot.eventbus.Subscribe;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,6 +138,18 @@ public class MainActivity extends BaseActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
+    }
+
+    @Subscribe
+    public void onDeleteMenuEvent(DeleteMenuEvent menuEvent) {
+        Toast.makeText(this, "delete menuEvent" + menuEvent.getRestoMenu().getDescription(),
+            Toast.LENGTH_SHORT).show();
+    }
+
+    @Subscribe
+    public void onUpdateMenuEvent(UpdateMenuEvent menuEvent) {
+        Toast.makeText(this, "update menuEvent" + menuEvent.getRestoMenu().getDescription(),
+            Toast.LENGTH_SHORT).show();
     }
 
 }
