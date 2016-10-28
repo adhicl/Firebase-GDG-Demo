@@ -37,6 +37,8 @@ public class MainActivity extends BaseActivity {
 
     private List<RestoMenu> restoMenuList = new ArrayList<>();
 
+    private ValueEventListener menuListener;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_main;
@@ -58,11 +60,18 @@ public class MainActivity extends BaseActivity {
         });
 
         initRecyclerView();
-        getMenus();
+        initListener();
     }
 
-    private void getMenus() {
-        menuRef.addListenerForSingleValueEvent(new ValueEventListener() {
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        menuRef.addValueEventListener(menuListener);
+    }
+
+    private void initListener() {
+        menuListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 restoMenuList.clear();
@@ -77,8 +86,14 @@ public class MainActivity extends BaseActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        };
+    }
 
+    @Override
+    protected void onStop() {
+        menuRef.removeEventListener(menuListener);
+
+        super.onStop();
     }
 
     private void initRecyclerView() {

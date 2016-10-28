@@ -65,7 +65,7 @@ public class NewMenuActivity extends BaseActivity {
             etMenu.getText().toString(),
             etDescription.getText().toString(),
             rating.getRating(),
-            ""
+            "http://lorempixel.com/400/200/"
         );
 
         newMenuRef.setValue(restoMenu).addOnCompleteListener(this, new OnCompleteListener<Void>() {

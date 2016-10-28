@@ -24,6 +24,9 @@ public class RestoMenu {
         this.imageUrl = imageUrl;
     }
 
+    public RestoMenu() {
+    }
+
     public String getKey() {
         return key;
     }
