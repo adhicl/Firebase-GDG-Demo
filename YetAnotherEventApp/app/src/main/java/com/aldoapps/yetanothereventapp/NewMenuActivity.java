@@ -5,10 +5,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.greenrobot.eventbus.EventBus;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.text.TextUtilsCompat;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
@@ -34,6 +38,8 @@ public class NewMenuActivity extends BaseActivity {
     @BindView(R.id.rating)
     RatingBar rating;
 
+    String restoKey = "";
+
     private DatabaseReference menuRef = FirebaseDatabase.getInstance().getReference("menu");
 
     @Override
@@ -41,6 +47,19 @@ public class NewMenuActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         initToolbar();
+
+        Bundle args = getIntent().getExtras();
+        RestoMenu restoMenu = args.getParcelable(BundleKeys.MENU_KEY);
+        if (restoMenu != null) {
+            setRestoMenu(restoMenu);
+        }
+    }
+
+    private void setRestoMenu(RestoMenu restoMenu) {
+        restoKey = restoMenu.getKey();
+        etMenu.setText(restoMenu.getMenu());
+        etDescription.setText(restoMenu.getDescription());
+        rating.setRating(restoMenu.getRating());
     }
 
     private void initToolbar() {
@@ -50,7 +69,6 @@ public class NewMenuActivity extends BaseActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
-
     @Override
     protected int getLayout() {
         return R.layout.activity_new_menu;
@@ -58,10 +76,17 @@ public class NewMenuActivity extends BaseActivity {
 
     @OnClick(R.id.btn_submit)
     void onSubmitClick() {
-        DatabaseReference newMenuRef = menuRef.push();
+        DatabaseReference newMenuRef;
+
+        if (TextUtils.isEmpty(restoKey)) {
+            newMenuRef = menuRef.push();
+            restoKey = newMenuRef.getKey();
+        } else {
+            newMenuRef = menuRef.child(restoKey);
+        }
 
         RestoMenu restoMenu = new RestoMenu(
-            newMenuRef.getKey(),
+            restoKey,
             etMenu.getText().toString(),
             etDescription.getText().toString(),
             rating.getRating(),

@@ -1,10 +1,13 @@
 package com.aldoapps.yetanothereventapp;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by aldo on 10/29/16.
  */
 
-public class RestoMenu {
+public class RestoMenu implements Parcelable{
 
     private String key;
 
@@ -26,6 +29,26 @@ public class RestoMenu {
 
     public RestoMenu() {
     }
+
+    protected RestoMenu(Parcel in) {
+        key = in.readString();
+        menu = in.readString();
+        description = in.readString();
+        rating = in.readFloat();
+        imageUrl = in.readString();
+    }
+
+    public static final Creator<RestoMenu> CREATOR = new Creator<RestoMenu>() {
+        @Override
+        public RestoMenu createFromParcel(Parcel in) {
+            return new RestoMenu(in);
+        }
+
+        @Override
+        public RestoMenu[] newArray(int size) {
+            return new RestoMenu[size];
+        }
+    };
 
     public String getKey() {
         return key;
@@ -65,5 +88,19 @@ public class RestoMenu {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(key);
+        parcel.writeString(menu);
+        parcel.writeString(description);
+        parcel.writeFloat(rating);
+        parcel.writeString(imageUrl);
     }
 }

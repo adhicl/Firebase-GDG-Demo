@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import android.content.Intent;
@@ -69,13 +70,6 @@ public class MainActivity extends BaseActivity {
         initListener();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        menuRef.addValueEventListener(menuListener);
-    }
-
     private void initListener() {
         menuListener = new ValueEventListener() {
             @Override
@@ -93,13 +87,6 @@ public class MainActivity extends BaseActivity {
 
             }
         };
-    }
-
-    @Override
-    protected void onStop() {
-        menuRef.removeEventListener(menuListener);
-
-        super.onStop();
     }
 
     private void initRecyclerView() {
@@ -158,8 +145,31 @@ public class MainActivity extends BaseActivity {
 
     @Subscribe
     public void onUpdateMenuEvent(UpdateMenuEvent menuEvent) {
-        Toast.makeText(this, "update menuEvent" + menuEvent.getRestoMenu().getDescription(),
-            Toast.LENGTH_SHORT).show();
+        navigateToNewMenu(menuEvent.getRestoMenu());
     }
+
+    private void navigateToNewMenu(RestoMenu restoMenu) {
+        Intent intent = new Intent(this, NewMenuActivity.class);
+        intent.putExtra(BundleKeys.MENU_KEY, restoMenu);
+        startActivity(intent);
+    }
+
+
+
+    @Override
+    protected void onStop() {
+        EventBus.getDefault().unregister(this);
+        menuRef.removeEventListener(menuListener);
+        super.onStop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        EventBus.getDefault().register(this);
+        menuRef.addValueEventListener(menuListener);
+    }
+
 
 }
