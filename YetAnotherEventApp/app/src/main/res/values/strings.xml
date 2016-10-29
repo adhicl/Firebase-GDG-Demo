@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tiket Konser</string>
+    <string name="app_name">My Menu Book</string>
     <string name="action_sign_out">Sign Out</string>
 
     <string name="label_login_with_fb">Login with facebook</string>
