@@ -2,6 +2,7 @@ package com.aldoapps.yetanothereventapp;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -38,6 +39,10 @@ public class NewMenuActivity extends BaseActivity {
     String restoKey = "";
 
     private DatabaseReference menuRef = FirebaseDatabase.getInstance().getReference("menu");
+
+    private String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+    private DatabaseReference userMenuRef = menuRef.child(uid);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,10 +81,10 @@ public class NewMenuActivity extends BaseActivity {
         DatabaseReference newMenuRef;
 
         if (TextUtils.isEmpty(restoKey)) {
-            newMenuRef = menuRef.push();
+            newMenuRef = userMenuRef.push();
             restoKey = newMenuRef.getKey();
         } else {
-            newMenuRef = menuRef.child(restoKey);
+            newMenuRef = userMenuRef.child(restoKey);
         }
 
         RestoMenu restoMenu = new RestoMenu(

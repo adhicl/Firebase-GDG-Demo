@@ -35,6 +35,10 @@ public class MainActivity extends BaseActivity {
 
     private DatabaseReference menuRef = firebaseDatabase.getReference("menu");
 
+    private String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+    private DatabaseReference userMenuRef = menuRef.child(uid);
+
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     @BindView(R.id.rv_menu)
@@ -132,7 +136,7 @@ public class MainActivity extends BaseActivity {
 
     @Subscribe
     public void onDeleteMenuEvent(final DeleteMenuEvent menuEvent) {
-        menuRef.child(menuEvent.getRestoMenu().getKey()).removeValue().addOnCompleteListener(this,
+        userMenuRef.child(menuEvent.getRestoMenu().getKey()).removeValue().addOnCompleteListener(this,
             new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -159,7 +163,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onStop() {
         EventBus.getDefault().unregister(this);
-        menuRef.removeEventListener(menuListener);
+        userMenuRef.removeEventListener(menuListener);
         super.onStop();
     }
 
@@ -168,7 +172,7 @@ public class MainActivity extends BaseActivity {
         super.onStart();
 
         EventBus.getDefault().register(this);
-        menuRef.addValueEventListener(menuListener);
+        userMenuRef.addValueEventListener(menuListener);
     }
 
 
